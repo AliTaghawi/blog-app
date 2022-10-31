@@ -8,7 +8,7 @@ const Header = () => {
       <Container maxWidth="lg">
         <Toolbar>
           <Typography component="h1" variant="h5" fontWeight="bold" flex={1}>
-            علیگرمینگ
+            علی گرمینگ
           </Typography>
           <BookIcon />
         </Toolbar>
