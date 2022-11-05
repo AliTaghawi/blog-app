@@ -19,4 +19,17 @@ const GET_POSTS = gql`
   }
 `;
 
-export { GET_POSTS };
+const GET_AUTHORS = gql`
+  query {
+    authors {
+      id
+      name
+      slug
+      avatar {
+        url
+      }
+    }
+  }
+`;
+
+export { GET_POSTS, GET_AUTHORS };
