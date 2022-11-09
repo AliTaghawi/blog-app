@@ -17,19 +17,21 @@ const CardEL = ({ author, title, slug, coverImage }) => {
     <Card
       sx={{ boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.15)", borderRadius: 4 }}
     >
-      <CardHeader
-        avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 2 }} />}
-        title={
-          <Typography
-            component="p"
-            variant="p"
-            color="text.secondary"
-            fontWeight={600}
-          >
-            {author.name}
-          </Typography>
-        }
-      />
+      {author && (
+        <CardHeader
+          avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 2 }} />}
+          title={
+            <Typography
+              component="p"
+              variant="p"
+              color="text.secondary"
+              fontWeight={600}
+            >
+              {author.name}
+            </Typography>
+          }
+        />
+      )}
       <CardMedia
         component="img"
         height="194"
@@ -48,7 +50,10 @@ const CardEL = ({ author, title, slug, coverImage }) => {
       </CardContent>
       <Divider variant="middle" sx={{ margin: "10px" }} />
       <CardActions>
-        <Link to={`/blogs/${slug}`} style={{textDecoration : 'none', width: '100%'}}>
+        <Link
+          to={`/blogs/${slug}`}
+          style={{ textDecoration: "none", width: "100%" }}
+        >
           <Button
             variant="outlined"
             size="small"
