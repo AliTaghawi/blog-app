@@ -4,14 +4,17 @@ import { Grid } from "@mui/material";
 
 import { GET_POSTS } from "../../graphql/querys";
 import CardEL from "../shared/CardEL";
+import Loader from "../shared/Loader";
 
 
 const Blogs = () => {
-  const { loading, data } = useQuery(GET_POSTS);
+  const { loading, data, error } = useQuery(GET_POSTS);
+  
+  if (loading) return <Loader />;
+  
+  if (error) return <h1>Error ...</h1>;
+  
   console.log(data)
-
-  if (loading) return  <h2>Loading ...</h2>
-
   if (data) return (
     <Grid container spacing={2}>
       {data.posts.map((post) => (

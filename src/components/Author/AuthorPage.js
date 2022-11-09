@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import sanitizeHtml from "sanitize-html";
 import { GET_AUTHOR } from "../../graphql/querys";
 import CardEL from "../shared/CardEL";
+import Loader from "../shared/Loader";
 
 const AuthorPage = () => {
   const { slug } = useParams();
@@ -12,7 +13,7 @@ const AuthorPage = () => {
     variables: { slug },
   });
 
-  if (loading) return <h1>Loading ...</h1>;
+  if (loading) return <Loader />;
   if (error) return <h1>Error ...</h1>;
   const {
     author: { avatar, name, description, field, posts },
@@ -37,10 +38,13 @@ const AuthorPage = () => {
           </Typography>
         </Grid>
         <Grid item xs={12} mt={4}>
-          <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(description.html) }} style={{textAlign: 'justify'}} ></div>
+          <div
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(description.html) }}
+            style={{ textAlign: "justify" }}
+          ></div>
         </Grid>
-        <Grid container spacing={2} mt={4} >
-          {posts.map(post => (
+        <Grid container spacing={2} mt={4}>
+          {posts.map((post) => (
             <Grid item xs={4} key={post.id}>
               <CardEL {...post} />
             </Grid>
