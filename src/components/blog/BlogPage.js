@@ -6,6 +6,7 @@ import { GET_POST } from "../../graphql/querys";
 import Loader from "../shared/Loader";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import sanitizeHtml from "sanitize-html";
+import CommentForm from "../comment/CommentForm";
 
 const BlogPage = () => {
   const { slug } = useParams();
@@ -55,7 +56,7 @@ const BlogPage = () => {
             overflow: "hidden",
           }}
         >
-          <img src={coverImage.url} style={{ width: "100%" }} />
+          <img src={coverImage.url} alt={title} style={{ width: "100%" }} />
         </Box>
         <Grid item xs={12} display="flex" alignItems="center" mt={5}>
           <Avatar
@@ -76,6 +77,9 @@ const BlogPage = () => {
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(content.html)}}
             style={{ textAlign: "justify" }}
           ></div>
+        </Grid>
+        <Grid item xs={12} mt={5}>
+          <CommentForm slug={slug} />
         </Grid>
       </Grid>
     </Container>
