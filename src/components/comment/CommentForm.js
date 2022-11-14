@@ -12,7 +12,7 @@ const CommentForm = ({ slug }) => {
     text: "",
   });
 
-  const [sendComment, { loading, data, error }] = useMutation(SEND_COMMENT, {
+  const [sendComment, { loading, data }] = useMutation(SEND_COMMENT, {
     variables: {
       name: commentData.name,
       email: commentData.email,
