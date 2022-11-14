@@ -7,6 +7,7 @@ import Loader from "../shared/Loader";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import sanitizeHtml from "sanitize-html";
 import CommentForm from "../comment/CommentForm";
+import Comments from "../comment/Comments";
 
 const BlogPage = () => {
   const { slug } = useParams();
@@ -74,12 +75,15 @@ const BlogPage = () => {
         </Grid>
         <Grid item xs={12} mt={4}>
           <div
-            dangerouslySetInnerHTML={{ __html: sanitizeHtml(content.html)}}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(content.html) }}
             style={{ textAlign: "justify" }}
           ></div>
         </Grid>
-        <Grid item xs={12} mt={5}>
+        <Grid item xs={12}>
           <CommentForm slug={slug} />
+        </Grid>
+        <Grid item xs={12}>
+          <Comments slug={slug} />
         </Grid>
       </Grid>
     </Container>
